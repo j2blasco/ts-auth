@@ -22,7 +22,7 @@ export default [
         {
           default: 'disallow',
           rules: [
-
+            { from: 'root', allow: ['rxjs', '@j2blasco/ts-result'] }
           ]
         }
       ],
