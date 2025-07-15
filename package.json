@@ -1,14 +1,25 @@
 {
-  "name": "@j2blasco/ts-package-template",
-  "version": "0.1.1",
-  "description": "Typescript Package Template",
+  "name": "@j2blasco/ts-auth",
+  "version": "0.1.3",
+  "description": "TypeScript authentication abstraction library that eliminates vendor lock-in and provides mock-free testing for both frontend and backend authentication systems",
   "author": "j2blasco",
   "license": "MIT",
   "type": "module",
   "keywords": [
+    "authentication",
+    "auth",
     "typescript",
-    "package",
-    "template"
+    "testing",
+    "firebase",
+    "auth0",
+    "cognito",
+    "vendor-agnostic",
+    "abstraction",
+    "frontend",
+    "backend",
+    "mock-free",
+    "rxjs",
+    "result-type"
   ],
   "publishConfig": {
     "access": "public"
@@ -18,7 +29,7 @@
   "types": "./types/index.d.ts",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/j2blasco/ts-auth.git"
   },
   "exports": {
     ".": {
