@@ -201,12 +201,6 @@ npm run build
 5. Ensure all tests pass: `npm test`
 6. Submit a pull request
 
-## 📖 Learn More
-
-- **[Complete Article](./article.md)**: Deep dive into the architecture and philosophy
-- **[Guidelines](./GUIDLINES.md)**: Development principles and patterns
-- **[API Documentation](./docs/)**: Detailed interface documentation
-
 ## 🛠️ Example Implementations
 
 Want to see real implementations? Check out these examples:
