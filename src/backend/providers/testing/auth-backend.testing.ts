@@ -1,19 +1,20 @@
-import { Subject } from 'rxjs';
 import {
-  ErrorUnknown,
-  ErrorWithCode,
   Result,
+  ErrorUnknown,
   resultError,
-  resultSuccess,
   resultSuccessVoid,
-} from 'src/common/utils/result';
+  resultSuccess,
+  ErrorWithCode,
+} from '@j2blasco/ts-result';
+import { IAuthBackend } from 'backend/core/auth-backend.interface';
+import { Subject } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 
 export function createBackendAuthTesting() {
   return new TestingBackendAuth();
 }
 
-export class TestingBackendAuth implements IBackendAuth {
+export class TestingBackendAuth implements IAuthBackend {
   constructor() {}
 
   public changePassword(args: {
@@ -44,6 +45,7 @@ export class TestingBackendAuth implements IBackendAuth {
     uid: string;
     email: string;
     password: string;
+    refreshToken: string;
   }>();
 
   public getUidFromIdToken(
@@ -91,22 +93,30 @@ export class TestingBackendAuth implements IBackendAuth {
     return Promise.resolve(
       resultSuccess({
         uid: user.uid,
-        refreshToken: 'dummy-refresh-token',
+        refreshToken: user.refreshToken,
         idToken: user.idToken,
       }),
     );
   }
 
   public async signInWithRefreshToken(
-    _refreshToken: string,
+    refreshToken: string,
   ): Promise<Result<{ idToken: string; uid: string }, ErrorUnknown>> {
-    const user = this.registeredUsers[0]; // Simplified for testing
+    // Find the user with the matching refresh token
+    const user = this.registeredUsers.find(
+      (u) => u.refreshToken === refreshToken,
+    );
     if (!user) {
       return Promise.resolve(resultError.unknown('Invalid refresh token'));
     }
+
+    // Generate a new idToken for this session
+    const newIdToken = uuidv4();
+    user.idToken = newIdToken;
+
     return Promise.resolve(
       resultSuccess({
-        idToken: user.idToken,
+        idToken: newIdToken,
         uid: user.uid,
       }),
     );
@@ -118,11 +128,13 @@ export class TestingBackendAuth implements IBackendAuth {
   }): Promise<Result<{ uid: string }, ErrorUnknown>> {
     const uid = uuidv4();
     const idToken = uuidv4();
+    const refreshToken = uuidv4();
     this.registeredUsers.push({
       idToken,
       uid,
       email: _args.email,
       password: _args.password,
+      refreshToken,
     });
     this.onUserCreated$.next({ uid });
     return Promise.resolve(resultSuccess({ uid }));
