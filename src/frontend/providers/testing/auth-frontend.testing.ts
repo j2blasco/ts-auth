@@ -8,7 +8,7 @@ import {
   resultSuccessVoid,
   resultError,
 } from '@j2blasco/ts-result';
-import { IAuth, BackendAuthUser, UserId } from '../../core/auth.interface';
+import { IAuthFrontend, BackendAuthUser, UserId } from '../../core/auth-frontend.interface';
 
 interface FakeUser {
   uid: UserId;
@@ -22,7 +22,7 @@ interface FakePasswordResetToken {
   expiresAt: number;
 }
 
-export class AuthTesting implements IAuth {
+export class AuthTesting implements IAuthFrontend {
   private users: Map<string, FakeUser> = new Map();
   private currentUser: BackendAuthUser | null = null;
   private authState = new BehaviorSubject<BackendAuthUser | null | undefined>(

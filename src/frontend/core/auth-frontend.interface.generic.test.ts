@@ -1,5 +1,5 @@
 import { Result } from '@j2blasco/ts-result';
-import { IAuth } from './auth.interface';
+import { IAuthFrontend } from './auth-frontend.interface';
 
 /**
  * Helper functions for testing Result types
@@ -26,9 +26,9 @@ function getResultError<T, E>(result: Result<T, E>): E {
  * Comprehensive test suite for IAuth implementations.
  * Run this against any implementation to verify it satisfies the interface contract.
  */
-export function testAuth(authFactory: () => IAuth): void {
+export function testAuth(authFactory: () => IAuthFrontend): void {
   describe('IAuth implementation tests', () => {
-    let auth: IAuth;
+    let auth: IAuthFrontend;
 
     beforeEach(async () => {
       auth = authFactory();

@@ -1,5 +1,5 @@
-import { AuthTesting } from './auth.testing';
-import { testAuth } from '../../core/auth.interface.utils.test';
+import { AuthTesting } from './auth-frontend.testing';
+import { testAuth } from '../../core/auth-frontend.interface.generic.test';
 
 describe('AuthTesting Core', () => {
   const authFactory = () => new AuthTesting();

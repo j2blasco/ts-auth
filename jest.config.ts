@@ -8,7 +8,7 @@ const config: JestConfigWithTsJest = {
   transform: {
     '^.+\\.tsx?$': ['ts-jest', { useESM: true }],
   },
-  testMatch: ['**/*.test.ts', '!**/*.utils.test.ts'],
+  testMatch: ['**/*.test.ts', '!**/*.utils.test.ts', '!**/*.generic.test.ts'],
   testPathIgnorePatterns: ['./dist'],
 };
 

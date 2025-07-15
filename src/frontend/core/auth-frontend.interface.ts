@@ -13,7 +13,7 @@ export type UserId = string;
 export type BackendAuthUser = { uid: UserId };
 
 // Authentication service like Firebase Auth or AWS Cognito
-export interface IAuth {
+export interface IAuthFrontend {
   authState$: Observable<BackendAuthUser | null | undefined>;
   signInWithEmailAndPassword(args: {
     email: string;
