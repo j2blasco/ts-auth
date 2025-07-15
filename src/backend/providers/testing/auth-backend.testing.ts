@@ -10,11 +10,7 @@ import { IAuthBackend } from 'backend/core/auth-backend.interface';
 import { Subject } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 
-export function createBackendAuthTesting() {
-  return new TestingBackendAuth();
-}
-
-export class TestingBackendAuth implements IAuthBackend {
+export class AuthBackendTesting implements IAuthBackend {
   constructor() {}
 
   public changePassword(args: {

@@ -1,6 +1,7 @@
-// Export the core authentication interface
 export * from './frontend/core/auth-frontend.interface';
+export { testAuthFrontend } from './frontend/core/auth-frontend.generic.test';
+export { AuthFrontendTesting } from './frontend/providers/testing/auth-frontend.testing';
 
-// Export testing utilities
-export { testAuth } from './frontend/core/auth-frontend.interface.generic.test';
-export { AuthTesting } from './providers/testing/auth.testing';
+export * from './backend/core/auth-backend.interface';
+export { testAuthBackend } from './backend/core/auth-backend.generic.test';
+export { AuthBackendTesting } from './backend/providers/testing/auth-backend.testing';

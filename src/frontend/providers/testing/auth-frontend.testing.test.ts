@@ -1,19 +1,19 @@
-import { AuthTesting } from './auth-frontend.testing';
-import { testAuth } from '../../core/auth-frontend.interface.generic.test';
+import { AuthFrontendTesting } from './auth-frontend.testing';
+import { testAuthFrontend } from '../../core/auth-frontend.generic.test';
 
 describe('AuthTesting Core', () => {
-  const authFactory = () => new AuthTesting();
-  testAuth(authFactory);
+  const authFactory = () => new AuthFrontendTesting();
+  testAuthFrontend(authFactory);
 });
 
 describe('AuthTesting Implementation', () => {
-  testAuth(() => new AuthTesting());
+  testAuthFrontend(() => new AuthFrontendTesting());
 
   describe('AuthTesting specific features', () => {
-    let auth: AuthTesting;
+    let auth: AuthFrontendTesting;
 
     beforeEach(() => {
-      auth = new AuthTesting();
+      auth = new AuthFrontendTesting();
     });
 
     it('should allow adding test users', () => {

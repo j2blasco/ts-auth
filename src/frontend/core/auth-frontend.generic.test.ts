@@ -26,7 +26,7 @@ function getResultError<T, E>(result: Result<T, E>): E {
  * Comprehensive test suite for IAuth implementations.
  * Run this against any implementation to verify it satisfies the interface contract.
  */
-export function testAuth(authFactory: () => IAuthFrontend): void {
+export function testAuthFrontend(authFactory: () => IAuthFrontend): void {
   describe('IAuth implementation tests', () => {
     let auth: IAuthFrontend;
 
